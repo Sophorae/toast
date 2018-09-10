@@ -70,8 +70,7 @@ function showToast(option) {
                 "text-decoration": "none",
                 "background": "#F29718",
                 "border-radius": "4px"
-            }).attr("href", "javascript:;").text("确定")
-            btn.on("click", function() {
+            }).attr("href", "javascript:;").text("确定").on("click", function() {
                 toast.remove();
             })
         }
@@ -80,8 +79,8 @@ function showToast(option) {
         btn ? box.append(btn) : '';
         toast.append(box);
         $("body").append(toast);
-        setTimeout(function() {
-            toast.remove()
-        }, 2000)
+        // setTimeout(function() {
+        //     toast.remove()
+        // }, 2000)
     }
 }
