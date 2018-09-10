@@ -1,40 +1,48 @@
+/* option = {
+    type: "success/failure",
+    message: text   //成功可不填
+} */
+
+/* example : showToast({
+    type: "success"
+}) */
+
 function showToast(option) {
-    var toast = $("<div>").css({
-        "position": "fixed",
-        "top": 0,
-        "left": 0,
-        "width": "100%",
-        "height": "100%",
-        "background": "rgba(0,0,0,0.35)",
-        "z-index": "100"
-    });
-    var box = $("<div>").css({
-        "position": "absolute",
-        "left": "50%",
-        "top": "50%",
-        "margin-left": "-246px",
-        "width": "492px",
-        "padding": "40px 0",
-        "background": "#ffffff"
-    })
-    var content = $("<p>").css({
-        "margin": "0 auto",
-        "height": "25px",
-        "line-height": "25px",
-        "text-align": "center",
-        "font-size": "18px",
-        "color": "#333333"
-    })
-    var tips = $("<p>").css({
-        "margin-top": "14px",
-        "height": "14px",
-        "line-height": "14px",
-        "text-align": "center",
-        "font-size": "14px",
-        "color": "#999999"
-    })
-    
     if (option) {
+        var toast = $("<div>").css({
+            "position": "fixed",
+            "top": 0,
+            "left": 0,
+            "width": "100%",
+            "height": "100%",
+            "background": "rgba(0,0,0,0.35)",
+            "z-index": "100"
+        });
+        var box = $("<div>").css({
+            "position": "absolute",
+            "left": "50%",
+            "top": "50%",
+            "margin-left": "-246px",
+            "width": "492px",
+            "padding": "40px 0",
+            "background": "#ffffff"
+        })
+        var content = $("<p>").css({
+            "margin": "0 auto",
+            "height": "25px",
+            "line-height": "25px",
+            "text-align": "center",
+            "font-size": "18px",
+            "color": "#333333"
+        })
+        var tips = $("<p>").css({
+            "margin-top": "14px",
+            "height": "14px",
+            "line-height": "14px",
+            "text-align": "center",
+            "font-size": "14px",
+            "color": "#999999"
+        })
         if (option.type == "success") {
             content.html("<span class='icon-uniE943'><span class='path1'></span><span class='path2'></span></span>" +" "+"<span>提交成功</span>")
             if (option.message) {
@@ -66,21 +74,14 @@ function showToast(option) {
             btn.on("click", function() {
                 toast.remove();
             })
-        } else {
-            console.error("(#`O′)未定义option, 格式:{type: \"success/failure\", message: text}")
         }
-    } else {
-        console.error("(#`O′)未定义option, 格式:{type: \"success/failure\", message: text}")
+        box.append(content);
+        box.append(tips);
+        btn ? box.append(btn) : '';
+        toast.append(box);
+        $("body").append(toast);
+        setTimeout(function() {
+            toast.remove()
+        }, 2000)
     }
-    box.append(content);
-    box.append(tips);
-    btn ? box.append(btn) : '';
-    toast.append(box);
-    $("body").append(toast);
-    setTimeout(function() {
-        toast.remove()
-    }, 2000)
 }
-showToast({
-    type: "success"
-})

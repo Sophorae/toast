@@ -16,28 +16,23 @@
             width: 100%;
             height: 100%;
         }
+        button {
+            display: block;
+            margin: 100px auto;
+        }
     </style>
 </head>
 <body>
-    <div class="toast">
-        <div>
-            <p class="failure">
-                <span class="icon-5">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-                </span>
-                <span>提交失败</span>
-            </p>
-            <p class="success">
-                <span class="icon-uniE943">
-                    <span class="path1"></span><span class="path2"></span>
-                </span>
-                <span>提交成功</span>
-            </p>
-            <p class="tips">提示引起提交失败的具体原因</p>
-            <a class="sure" href="javascript:;">确定</a>
-        </div>
-    </div>
+    <button>btn</button>
     <script src="./jquery.js"></script>
     <script src="./index.js"></script>
+    <script>
+        $("button").click(function() {
+            showToast({
+                type: "success",
+                message: "123"
+            })
+        })
+    </script>
 </body>
 </html>
